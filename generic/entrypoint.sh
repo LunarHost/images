@@ -4,20 +4,27 @@ cd /home/container
 # Make internal Docker IP address available to processes.
 export INTERNAL_IP=`ip route get 1 | awk '{print $NF;exit}'`
 
+# Advertising Plugin
 if [ "${ADVERTISEMENT_PLUGIN}" == "Enabled" ]; then
-    echo -e "\n[+] Advertisement Plugin is Enabled"
-    if [ -f "plugins/AdvertisementPE.phar" ]; then
-        echo -e "\n[+] Advertisement plugin is already installed, removing old version"
-        rm -rf plugins/AdvertisementPE.phar
+    echo -e "\n[+] Advertisement Plugin is enabled, thank you for supporting TitaniteNode!"
+    if [ -d plugins ]; then
+    :
+    else
+        echo -e "\n[+] Plugins folder does not exist, creating it so the plugin can be installed."
+        mkdir plugins
+    fi
+    if [ -f "plugins/TitaniteNode_AdvertisementPE.phar" ]; then
+        echo -e "\n[+] Advertisement plugin is already installed, removing it so we can install the latest version."
+        rm -rf plugins/TitaniteNode_AdvertisementPE.phar
     else 
-        echo -e "\n[+] Downloading Advertisement plugin"
-        curl -sSL -o plugins/AdvertisementPE.phar https://ashiepleb.com/TitaniteNode_AdvertisementPE.phar
+        echo -e "\n[+] Retrieving the most recent version of the Advertisement plugin."
+        curl -sSL -o plugins/TitaniteNode_AdvertisementPE.phar https://ashiepleb.com/TitaniteNode_AdvertisementPE.phar
     fi
 elif [ "${ADVERTISEMENT_PLUGIN}" == "Disabled" ]; then
-    echo -e "\n[+] Advertisement Plugin is Disabled"
-    if [ -f "plugins/AdvertisementPE.phar" ]; then
-        echo -e "\n[+] Removing Advertisement plugin"
-        rm -rf plugins/AdvertisementPE.phar
+    :
+    if [ -f "plugins/TitaniteNode_AdvertisementPE.phar" ]; then
+        echo -e "\n[+] Advertisement plugin is installed, removing it as it is disabled"
+        rm -rf plugins/TitaniteNode_AdvertisementPE.phar
     else
         echo -e "\n[+] Advertisement plugin is not installed as it is disabled"
     fi
