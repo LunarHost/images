@@ -1,6 +1,6 @@
 # ----------------------------------
-# Sparked Host Custom Image
-# Image: ghcr.io/LunarHost/images:generic-debian
+# Custom Debian Docker image for TitaniteNode.com
+# Image: ghcr.io/lunarhost/images:generic-debian
 # ----------------------------------
 
 FROM debian:bullseye-slim

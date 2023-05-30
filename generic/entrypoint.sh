@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Change working directory to /home/container so that the server starts here.
 cd /home/container
 
 # Make internal Docker IP address available to processes.
