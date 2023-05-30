@@ -5,22 +5,23 @@ cd /home/container
 export INTERNAL_IP=`ip route get 1 | awk '{print $NF;exit}'`
 
 if [ "${ADVERTISEMENT_PLUGIN}" == "Enabled" ]; then
-    echo "\n[+] Advertisement Plugin is Enabled"
+    echo -e "\n[+] Advertisement Plugin is Enabled"
     if [ -f "plugins/AdvertisementPE.phar" ]; then
-    echo "\n[+] Advertisment plugin is already installed, removing old version"
+        echo -e "\n[+] Advertisement plugin is already installed, removing old version"
+        rm -rf plugins/AdvertisementPE.phar
     else 
-    echo "\n[+] Downloading Advertisement plugin"
-    rm -rf plugins/AdvertisementPE.phar
-    curl -sSL https://ashiepleb.com/TitaniteNode_AdvertisementPE.phar
-    done
-    elif [ "${ADVERTISEMENT_PLUGIN}" == "Disabled" ]; then
-    echo "\n[+] Advertisement Plugin is Disabled"
-    if [ -f "plugins/AdvertisementPE.phar" ]; then
-    echo "\n[+] Removing Advertisement plugin"
-    else
-    echo "\n[+] Advertisement plugin is not installed as it is disabled"
-    done
+        echo -e "\n[+] Downloading Advertisement plugin"
+        curl -sSL -o plugins/AdvertisementPE.phar https://ashiepleb.com/TitaniteNode_AdvertisementPE.phar
     fi
+elif [ "${ADVERTISEMENT_PLUGIN}" == "Disabled" ]; then
+    echo -e "\n[+] Advertisement Plugin is Disabled"
+    if [ -f "plugins/AdvertisementPE.phar" ]; then
+        echo -e "\n[+] Removing Advertisement plugin"
+        rm -rf plugins/AdvertisementPE.phar
+    else
+        echo -e "\n[+] Advertisement plugin is not installed as it is disabled"
+    fi
+fi
 
 # Replace Startup variables
 MODIFIED_STARTUP=$(echo -e ${STARTUP} | sed -e 's/{{/${/g' -e 's/}}/}/g')
