@@ -33,4 +33,4 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            ghcr.io/LunarHost/images:generic-debian
+            ghcr.io/lunarhost/images:generic-debian
