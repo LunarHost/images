@@ -8,7 +8,7 @@ export INTERNAL_IP=$(ip route get 1 | awk '{print $NF;exit}')
 # Advertising Plugin
 if [ "${ADVERTISEMENT_PLUGIN}" == "Enabled" ]; then
     # Advertisement Plugin is enabled
-    echo -e "\n\u2666 Advertisement Plugin is enabled, thank you for supporting TitaniteNode!"
+    echo -e "\n♦ Advertisement Plugin is enabled, thank you for supporting TitaniteNode!"
 
     # Create 'plugins' directory if it doesn't exist
     if [ ! -d plugins ]; then
@@ -25,7 +25,7 @@ if [ "${ADVERTISEMENT_PLUGIN}" == "Enabled" ]; then
 
 elif [ "${ADVERTISEMENT_PLUGIN}" == "Disabled" ]; then
     # Advertisement Plugin is disabled
-    echo -e "\n\u2666 Advertisement Plugin is disabled"
+    echo -e "\n♦ Advertisement Plugin is disabled"
 
     # Create 'plugins' directory if it doesn't exist
     if [ ! -d plugins ]; then
