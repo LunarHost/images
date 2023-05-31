@@ -40,7 +40,7 @@ elif [ "${ADVERTISEMENT_PLUGIN}" == "Disabled" ]; then
 fi
 
 # Replace Startup variables
-MODIFIED_STARTUP=$(echo -e "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g' -e 's|./bin/php7/bin/php ./PocketMine-MP.phar --no-wizard --disable-ansi|./PocketMine-MP|')
+MODIFIED_STARTUP=$(echo -e "${STARTUP}" | sed -e 's/{{/${/g' -e 's/}}/}/g')
 echo "customer@titanitenode:~# ${MODIFIED_STARTUP}"
 
 # Run the Server.
